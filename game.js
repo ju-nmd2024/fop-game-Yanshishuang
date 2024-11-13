@@ -1,12 +1,7 @@
  function setup(){
   createCanvas(800,600);
  }
- let x = 600;
- let y = 100;
- let gameState = true;
- // game logic variable
- let velocityY = 0.2;
- let acceleration = 0.2;
+ 
  function tree(){
     // the Crown of tree
     stroke(34,139,34);
@@ -31,6 +26,10 @@
   triangle(260,430,240,455,280,455);
  }
 function Character(x,y,Fly){
+  push();
+  translate(x,y);
+  scale(0.2);
+  translate(-x,-y);
   mainbody(x,y);
   ears(x,y);
   eyebrows(x,y);
@@ -64,6 +63,7 @@ function Character(x,y,Fly){
   pop();}
   mouth(x,y);
   foot(x,y);
+  pop();
 }
 function mainbody(x,y){
 fill (150, 130, 110);
@@ -260,6 +260,12 @@ function Gamebackground(){
   ellipse(200,210,100);
   pop();
 }
+let x = 600;
+let y = 100;
+let gameState = true;
+// game logic variable
+let velocityY = 0.2;
+let acceleration = 0.2;
 function draw(){
   Gamebackground();
   tree();
@@ -281,11 +287,11 @@ function draw(){
          if (keyIsDown(65)){
          x = x - 6;
         }
-         if (y >= 500){
+         if (y >= 600){
          gameState = false;
          console.log(" you're Die ");
         }
-        if(x > 190 && x < 240 && y <430 && y > 360){
+        if(x > 190 && x < 240 && y > 460 && y < 470){
           gameState = false;
           console.log (" you're Win");
         }
