@@ -1,8 +1,37 @@
  function setup(){
   createCanvas(800,600);
  }
+ let x = 200;
+ let y = 200;
+ let gameState = true;
+ // game logic variable
+ let velocityY = 0.2;
+ let acceleration = 0.2;
+ function tree(){
+    // the Crown of tree
+    stroke(34,139,34);
+    fill(144,238,144);
+    ellipse(400,350,500,250);
+  // the trunk
+  fill(139,69,19);
+  noStroke();
+  rect(380,380,40,250);
+  quad(380,580,360,600,440,600,420,580);
+  quad(290,419,280,419,382,498,382,480);
+  quad(510,330,520,330,410,458,410,428);
+  quad(220,490,210,500,400,520,400,500);
+  // the home of owl
+  fill(139,69,19);
+  ellipse(230,488,100,20);
+  fill(245,222,179);
+  rect(245,455,30,30);
+  fill(0);
+  ellipse(260,470,15);
+  fill(205,133,63);
+  triangle(260,430,240,455,280,455);
+ }
 function Character(x,y,Fly){
-  scale(0.5);
+  scale(0.2);
   mainbody(x,y);
  
   ears(x,y);
@@ -223,16 +252,6 @@ function Gamebackground(){
   ellipse(200,210,100);
   pop();
   push();
-  translate(200,50);
-  scale(0.6);
-  noStroke();
-  fill(255,255,255);
-  ellipse(200,180,100);
-  ellipse(145,200,100);
-  ellipse(245,200,100);
-  ellipse(200,210,100);
-  pop();
-  push();
   translate(500,-50);
   scale(0.6);
   noStroke();
@@ -242,31 +261,21 @@ function Gamebackground(){
   ellipse(245,200,100);
   ellipse(200,210,100);
   pop();
-  push();
-  translate(400,70);
-  scale(0.6);
-  noStroke();
-  fill(255,255,255);
-  ellipse(200,180,100);
-  ellipse(145,200,100);
-  ellipse(245,200,100);
-  ellipse(200,210,100);
-  pop();
 }
-let x = 200;
-let y = 200;
-
 function draw(){
   Gamebackground();
+  tree();
   
       if (keyIsDown(32)){
           Character(x,y,true);
       }else{
           Character(x,y,false);
       }
-      y = y  + 4;
+      y = y  + velocityY;
+      velocityY = velocityY + acceleration;
+       // decrease the velocity when clicking
       if (keyIsDown(32)){
-          y = y  -12; 
+          velocityY = velocityY - 0.7;
       } 
       if(keyIsDown(68)){
           x = x + 6;
