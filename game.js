@@ -1,4 +1,6 @@
-
+ function setup(){
+  createCanvas(800,600);
+ }
 function Character(x,y,Fly){
   mainbody(x,y);
  
