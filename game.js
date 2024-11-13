@@ -1,8 +1,8 @@
  function setup(){
   createCanvas(800,600);
  }
- let x = 200;
- let y = 200;
+ let x = 600;
+ let y = 100;
  let gameState = true;
  // game logic variable
  let velocityY = 0.2;
@@ -31,9 +31,7 @@
   triangle(260,430,240,455,280,455);
  }
 function Character(x,y,Fly){
-  scale(0.2);
   mainbody(x,y);
- 
   ears(x,y);
   eyebrows(x,y);
   if (Fly){
@@ -265,22 +263,31 @@ function Gamebackground(){
 function draw(){
   Gamebackground();
   tree();
-  
       if (keyIsDown(32)){
           Character(x,y,true);
       }else{
           Character(x,y,false);
       }
-      y = y  + velocityY;
-      velocityY = velocityY + acceleration;
-       // decrease the velocity when clicking
-      if (keyIsDown(32)){
-          velocityY = velocityY - 0.7;
+      if (gameState === true){
+        y = y  + velocityY;
+        velocityY = velocityY + acceleration;
+         // decrease the velocity when clicking
+         if (keyIsDown(32)){
+         velocityY = velocityY - 0.7;
+         } 
+         if(keyIsDown(68)){
+         x = x + 6;
+         }
+         if (keyIsDown(65)){
+         x = x - 6;
+        }
+         if (y >= 500){
+         gameState = false;
+         console.log(" you're Die ");
+        }
+        if(x > 190 && x < 240 && y <430 && y > 360){
+          gameState = false;
+          console.log (" you're Win");
+        }
       } 
-      if(keyIsDown(68)){
-          x = x + 6;
-      }
-      if (keyIsDown(65)){
-          x = x - 6;
-      }
 }
