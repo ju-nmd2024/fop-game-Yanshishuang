@@ -260,12 +260,15 @@ function Gamebackground(){
   ellipse(200,210,100);
   pop();
 }
-let x = 600;
+let x = width / 2;
 let y = 100;
 let gameState = true;
 // game logic variable
 let velocityY = 0.2;
 let acceleration = 0.2;
+function mouseClicked(){
+  x = Math.random()*width;
+}
 function draw(){
   Gamebackground();
   tree();
