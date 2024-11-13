@@ -334,8 +334,8 @@ function winScreen(){
 let x = 400;
 let y = 30;
 // game logic variable
-let velocityY = 0.2;
-let acceleration = 0.2;
+let velocityY = 0.1;
+let acceleration = 0.1;
 let state = "start";
 function draw(){
   if(state === "start"){
