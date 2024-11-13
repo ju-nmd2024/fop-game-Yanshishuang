@@ -2,6 +2,7 @@
   createCanvas(800,600);
  }
 function Character(x,y,Fly){
+  scale(0.5);
   mainbody(x,y);
  
   ears(x,y);
@@ -230,14 +231,14 @@ function draw(){
       }else{
           Character(x,y,false);
       }
-      y = y  + 2;
+      y = y  + 4;
       if (keyIsDown(32)){
           y = y  -12; 
       } 
       if(keyIsDown(68)){
-          x = x + 4;
+          x = x + 6;
       }
       if (keyIsDown(65)){
-          x = x - 4;
+          x = x - 6;
       }
 }
