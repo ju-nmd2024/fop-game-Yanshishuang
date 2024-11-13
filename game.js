@@ -260,16 +260,29 @@ function Gamebackground(){
   ellipse(200,210,100);
   pop();
 }
-let x = width / 2;
-let y = 100;
-let gameState = true;
-// game logic variable
-let velocityY = 0.2;
-let acceleration = 0.2;
-function mouseClicked(){
-  x = Math.random()*width;
+function startScreen(){
+  background(	0,139,139);
+  textSize(50);
+  fill(255,200,0);
+  text("Little Owl comes home",150,200);
+rect(350,400,100,50);
+stroke(255,255,255);
+fill(255,255,255);
+textSize(40);
+text("Start",357,438);
+Character(400,30);
 }
-function draw(){
+function resultScreen(){
+  background(250,128,114);
+  textSize(50);
+  text(" Game Over ",250,300);
+  fill(0,0,0);
+  rect(350,320,100,50);
+  fill(255);
+  textSize(20);
+  text("Start Over",355,350);
+}
+function gameScreen(){
   Gamebackground();
   tree();
       if (keyIsDown(32)){
@@ -277,7 +290,7 @@ function draw(){
       }else{
           Character(x,y,false);
       }
-      if (gameState === true){
+      if (state === "game"){
         y = y  + velocityY;
         velocityY = velocityY + acceleration;
          // decrease the velocity when clicking
@@ -291,12 +304,58 @@ function draw(){
          x = x - 6;
         }
          if (y >= 600){
-         gameState = false;
+         state = "result";
          console.log(" you're Die ");
+         x = 400;
+         y = 30;
+         velocityY = 0;
         }
         if(x > 190 && x < 240 && y > 460 && y < 470){
-          gameState = false;
+          state = "win";
           console.log (" you're Win");
+          x = 400;
+          y = 30;
+          velocityY = 0;
         }
       } 
+}
+function winScreen(){
+  background(0,255,255);
+  Character(400,300);
+  textSize(50);
+  fill(255,255,0);
+  text("Thank You ! 🥰",260,200);
+  fill(0,0,0);
+  rect(350,400,100,50);
+  fill(255);
+  textSize(20);
+  text("Play again",355,430);
+}
+let x = 400;
+let y = 30;
+// game logic variable
+let velocityY = 0.2;
+let acceleration = 0.2;
+let state = "start";
+function draw(){
+  if(state === "start"){
+    startScreen();
+  }else if (state === "game"){
+    gameScreen();
+    gameState = true;
+  }else if (state === "result"){
+    resultScreen();
+  }else if ( state === "win"){
+    winScreen();
+  }
+}function mouseClicked(){
+  if(state === "start" && mouseX >= 350 && mouseX <= 450 && mouseY >= 400 && mouseY <= 450){
+      state = "game";
+  }
+  else if (state === "result" && mouseY >= 320 && mouseY <= 370 && mouseX >= 350 && mouseX <= 450){
+    state ="game";
+  }
+  else if (state === "win" && mouseY >= 400 && mouseY <= 450 && mouseX >= 350 && mouseX <= 450){
+    state = "game";
+  }
 }
