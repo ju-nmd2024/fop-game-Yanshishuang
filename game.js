@@ -1,6 +1,4 @@
-function setup() {
-  createCanvas(800, 600);
-}
+
 function Character(x,y,Fly){
   mainbody(x,y);
  
@@ -210,13 +208,21 @@ fill(0,0,0);
 strokeWeight(3);
 ellipse(x+40,y-40,70,5);
 }
-
+function Gamebackground(){
+  background(140, 169, 219);
+  noStroke();
+  fill(255,255,255);
+  ellipse(600,180,100);
+  ellipse(545,200,100);
+  ellipse(645,200,100);
+  ellipse(600,210,100);
+}
 let x = 200;
 let y = 200;
 
 function draw(){
-  background(140, 169, 219,130);
- 
+  Gamebackground();
+  
       if (keyIsDown(32)){
           Character(x,y,true);
       }else{
