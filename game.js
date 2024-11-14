@@ -1,7 +1,6 @@
  function setup(){
   createCanvas(800,600);
  }
- 
  function tree(){
     // the Crown of tree
     stroke(34,139,34);
@@ -238,6 +237,12 @@ fill(0,0,0);
 strokeWeight(3);
 ellipse(x+40,y-40,70,5);
 }
+let x = 400;
+let y = 30;
+// game logic variable
+let velocityY = 0.1;
+let acceleration = 0.1;
+let state = "start";
 function Gamebackground(){
   background(140, 169, 219);
   push();
@@ -310,7 +315,7 @@ function gameScreen(){
          y = 30;
          velocityY = 0;
         }
-        if(x > 190 && x < 240 && y > 460 && y < 470){
+        if(x > 190 && x < 240 && y > 460 && y < 470 && velocityY <= 1){
           state = "win";
           console.log (" you're Win");
           x = 400;
@@ -331,24 +336,18 @@ function winScreen(){
   textSize(20);
   text("Play again",355,430);
 }
-let x = 400;
-let y = 30;
-// game logic variable
-let velocityY = 0.1;
-let acceleration = 0.1;
-let state = "start";
 function draw(){
   if(state === "start"){
     startScreen();
   }else if (state === "game"){
     gameScreen();
-    gameState = true;
   }else if (state === "result"){
     resultScreen();
   }else if ( state === "win"){
     winScreen();
   }
-}function mouseClicked(){
+}
+function mouseClicked(){
   if(state === "start" && mouseX >= 350 && mouseX <= 450 && mouseY >= 400 && mouseY <= 450){
       state = "game";
   }
