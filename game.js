@@ -315,7 +315,7 @@ function gameScreen(){
          y = 30;
          velocityY = 0;
         }
-        if(x > 190 && x < 240 && y > 460 && y < 470 && velocityY <= 1){
+        if(x > 190 && x < 240 && y > 460 && y < 470 && velocityY <= 1.2){
           state = "win";
           console.log (" you're Win");
           x = 400;
