@@ -237,7 +237,7 @@ fill(0,0,0);
 strokeWeight(3);
 ellipse(x+40,y-40,70,5);
 }
-let x = 400;
+let x = 210;
 let y = 30;
 // game logic variable
 let velocityY = 0.1;
@@ -302,23 +302,17 @@ function gameScreen(){
          if (keyIsDown(32)){
          velocityY = velocityY - 0.7;
          } 
-         if(keyIsDown(68)){
-         x = x + 6;
-         }
-         if (keyIsDown(65)){
-         x = x - 6;
-        }
          if (y >= 600){
          state = "result";
          console.log(" you're Die ");
-         x = 400;
+         x = 210;
          y = 30;
          velocityY = 0;
         }
         if(x > 190 && x < 240 && y > 460 && y < 470 && velocityY < 2){
           state = "win";
           console.log (" you're Win");
-          x = 400;
+          x = 210;
           y = 30;
           velocityY = 0;
         }
